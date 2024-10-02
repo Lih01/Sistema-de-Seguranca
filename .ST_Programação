@@ -72,12 +72,12 @@ class Usuario {
     int estadoBotaoAnt;
     bool sistemaLigado;
   public:
-    Usuario(int botao) : botaoPin(botao), estadoBotaoAnt(LOW), sistemaLigado(false) {
-      pinMode(botaoPin, INPUT);
+    Usuario(int botao) : botaoPin(botao), estadoBotaoAnt(HIGH), sistemaLigado(false) {
+      pinMode(botaoPin, INPUT_PULLUP);
     }
     bool alternarSistema() {
       estadoBotao = digitalRead(botaoPin);
-      if (estadoBotao != estadoBotaoAnt && estadoBotao == HIGH) {
+      if (estadoBotao != estadoBotaoAnt && estadoBotao == LOW) {
         sistemaLigado = !sistemaLigado;
         delay(200);
       }
